@@ -1,62 +1,73 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS mylibrary;
+CREATE DATABASE IF NOT EXISTS huellitafeliz;
 
 -- Seleccionar la base de datos
-USE mylibrary;
+USE huellitafeliz;
 
--- Crear la tabla USUARIOS
-CREATE TABLE IF NOT EXISTS USUARIOS (
+-- Crear la tabla usuario
+CREATE TABLE IF NOT EXISTS usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(30),
-    apellido VARCHAR(30),
-    numero_tel VARCHAR(8),
-    correo VARCHAR(40),
-    password VARCHAR(30),
-    fecha_nac DATE
+    nombre VARCHAR(150),
+    apellido VARCHAR(150),
+    telefono BIGINT,
+    correo VARCHAR(150),
+    password VARCHAR(150),
+    temp_pass VARCHAR(150),
+    fecha_nac DATE,
+    rol ENUM('Trabajador', 'Cliente'),
+    verificado BOOLEAN DEFAULT FALSE
 );
 
--- Crear la tabla LIBROS
-CREATE TABLE IF NOT EXISTS LIBROS (
-    id_libro INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(20),
-    sinopsis TEXT,
-    precio_compra DECIMAL(10, 2),
-    precio_renta DECIMAL(10, 2),
-    autor VARCHAR(30),
-    año_publicacion INT,
-    editorial VARCHAR(40),
-    estado ENUM('Ocupado', 'Disponible')
-);
-
--- Crear la tabla RENTAS
-CREATE TABLE IF NOT EXISTS RENTAS (
-	id_renta INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT,
-    id_libro INT,
-    fecha_renta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_devolucion DATE,
-    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario),
-    FOREIGN KEY (id_libro) REFERENCES LIBROS(id_libro)
-   
-);
-
--- Crear la tabla VENTAS
-CREATE TABLE IF NOT EXISTS VENTAS (
-	id_venta INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT,
-    id_libro INT,
-    fecha_venta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario),
-    FOREIGN KEY (id_libro) REFERENCES LIBROS(id_libro)
- 
-);
-
--- Crear la tabla COMENTARIOS
-CREATE TABLE IF NOT EXISTS COMENTARIOS (
-	id_comentario INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT,
-    id_libro INT,
+-- Crear la tabla mascota
+CREATE TABLE IF NOT EXISTS mascota (
+    id_mascota INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_mascota VARCHAR(150),
+    edad INT,
+    especie VARCHAR(150),
+    raza VARCHAR(150),
+    comportamiento VARCHAR(150),
+    contacto_vet BIGINT,
     comentario TEXT,
-    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario) ON DELETE CASCADE,
-    FOREIGN KEY (id_libro) REFERENCES LIBROS(id_libro) ON DELETE CASCADE
+    id_usuario INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+);
+
+-- Crear la tabla atencion_mascota
+CREATE TABLE IF NOT EXISTS atencion_mascota (
+    id_atencion INT AUTO_INCREMENT PRIMARY KEY,
+    fecha_atencion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado ENUM('Comiendo', 'Paseando', 'Bañado', 'Tomando la siesta', 'Jugando'),
+    fecha_devolucion DATE,
+    id_usuario INT,
+    id_mascota INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_mascota) REFERENCES mascota(id_mascota) ON DELETE CASCADE
+);
+
+-- Crear la tabla resenas_hotel
+CREATE TABLE IF NOT EXISTS resenas_hotel (
+    id_resena_hotel INT AUTO_INCREMENT PRIMARY KEY,
+    resena TEXT,
+    calificacion INT,
+    id_usuario INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+);
+
+-- Crear la tabla resena_atencion
+CREATE TABLE IF NOT EXISTS resena_atencion (
+    id_resena INT AUTO_INCREMENT PRIMARY KEY,
+    resena TEXT,
+    calificacion INT,
+    id_atencion INT,
+    FOREIGN KEY (id_atencion) REFERENCES atencion_mascota(id_atencion) ON DELETE CASCADE
+);
+
+-- Crear la tabla producto
+CREATE TABLE IF NOT EXISTS producto (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(150),
+    precio INT,
+    descripcion TEXT,
+    cantidad INT,
+    imagen VARCHAR(255)
 );
