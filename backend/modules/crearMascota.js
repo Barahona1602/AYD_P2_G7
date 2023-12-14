@@ -14,7 +14,7 @@ router.post('/mascota', (req, res) => {
         [nombre_mascota, edad, especie, raza, comportamiento, contacto_vet, comentario, id_usuario],
         (insertError, insertResults) => {
             if (insertError) {
-                console.error('Error al agregar una nueva mascota:', insertError);
+                console.error('Error al agregar una nueva mascota :', insertError);
                 res.status(500).json({ mensaje: 'Error en el servidor' });
             } else {
                 const nuevaMascotaId = insertResults.insertId;
