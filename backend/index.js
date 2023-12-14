@@ -10,6 +10,7 @@ app.use(express.json());
 const holaMundo = require('./modules/holaMundo');
 const login = require('./modules/login');
 const crudUser = require('./modules/CRUDuser');
+const crearMascota = require('./modules/crearMascota');
 
 
 
@@ -27,6 +28,7 @@ const crudUser = require('./modules/CRUDuser');
 app.use('/', holaMundo);
 app.use('/', login);
 app.use('/', crudUser);
+app.use('/', crearMascota);
 
 
 
