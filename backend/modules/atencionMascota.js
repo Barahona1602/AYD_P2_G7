@@ -28,7 +28,29 @@ router.get('/atencionMascota/:id_usuario', (req, res) => {
     });
 });
 
+// Ruta para obtener todas las atenciones de mascotas para un id_usuario específico
+router.get('/atencionMascotaConteo/:id_usuario', (req, res) => {
+    const idUsuario = req.params.id_usuario;
 
+    // Validar que se proporcionó el ID del usuario
+    if (!idUsuario) {
+        return res.status(400).json({ mensaje: 'Falta el ID del usuario en la solicitud' });
+    }
+
+    // Realizar la consulta en la base de datos
+    const sql = 'SELECT COUNT(*) FROM ATENCION_MASCOTAS WHERE id_usuario = ? AND estado NOT IN (?, ?)';
+    const values = [idUsuario, 'Devuelto', 'Recibido'];
+
+    connection.query(sql, values, (err, results) => {
+        if (err) {
+            console.error('Error al obtener atenciones de mascotas:', err);
+            res.status(500).json({ mensaje: 'Error al obtener atenciones de mascotas' });
+        } else {
+            console.log('Atenciones de mascotas obtenidas con éxito');
+            res.json({ atencionesMascotas: results });
+        }
+    });
+});
 
 router.put('/atencionMascota/:id_atencion/:id_usuario', (req, res) => {
     const idAtencion = req.params.id_atencion;
