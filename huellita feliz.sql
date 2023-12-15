@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS ATENCION_MASCOTAS (
     fecha_devolucion DATE,
     id_usuario INT,
     id_mascota INT,
+    hospedado BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_mascota) REFERENCES MASCOTAS(id_mascota) ON DELETE CASCADE
 );
