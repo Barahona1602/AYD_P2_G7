@@ -12,6 +12,7 @@ const login = require('./modules/login');
 const registro = require('./modules/Registro');
 const crudUser = require('./modules/CRUDuser');
 const crearMascota = require('./modules/crearMascota');
+const seleccionMascota = require('./modules/seleccionMascota');
 
 
 
@@ -31,6 +32,7 @@ app.use('/', login);
 app.use('/', registro);
 app.use('/', crudUser);
 app.use('/', crearMascota);
+app.use('/', seleccionMascota);
 
 
 
