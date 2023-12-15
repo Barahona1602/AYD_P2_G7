@@ -36,11 +36,10 @@ CREATE TABLE IF NOT EXISTS MASCOTAS (
 CREATE TABLE IF NOT EXISTS ATENCION_MASCOTAS (
     id_atencion INT AUTO_INCREMENT PRIMARY KEY,
     fecha_atencion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    estado ENUM('Comiendo', 'Paseando', 'Bañado', 'Tomando la siesta', 'Jugando'),
+    estado ENUM('Comiendo', 'Paseando', 'Bañado', 'Tomando la siesta', 'Jugando', 'Hospedado', 'Devuelto', 'Recogido'),
     fecha_devolucion DATE,
     id_usuario INT,
     id_mascota INT,
-    hospedado BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_mascota) REFERENCES MASCOTAS(id_mascota) ON DELETE CASCADE
 );
