@@ -11,6 +11,15 @@ const registro = require('./modules/Registro');
 const crudUser = require('./modules/CRUDuser');
 const crearMascota = require('./modules/crearMascota');
 const hospedarMascota = require('./modules/hospedarMascota');
+const seleccionMascota = require('./modules/seleccionMascota');
+
+
+
+
+
+
+
+
 
 
 
@@ -23,6 +32,15 @@ app.use('/', registro);
 app.use('/', crudUser);
 app.use('/', crearMascota);
 app.use('/', hospedarMascota);
+app.use('/', seleccionMascota);
+
+
+
+
+
+
+
+
 
 
 
