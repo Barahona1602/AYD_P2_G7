@@ -74,8 +74,8 @@ CREATE TABLE IF NOT EXISTS PRODUCTOS (
 
 /*
 -- Inserción de un usuario
-INSERT INTO USUARIOS (nombre, apellido, telefono, correo, password, fecha_nac, rol, verificado)
-VALUES ('Pablo', 'Bara', 12345678, 'pablo@gmail.com', 'Pablo.123', '1990-01-01', 'Cliente', TRUE);
+INSERT INTO USUARIOS (id_usuario, nombre, apellido, telefono, correo, password, fecha_nac, rol, verificado)
+VALUES (1, 'Pablo', 'Bara', 12345678, 'pablo@gmail.com', 'Pablo.123', '1990-01-01', 'Cliente', TRUE);
 
 -- Inserción de una mascota
 INSERT INTO MASCOTAS (nombre_mascota, edad, especie, raza, comportamiento, contacto_vet, comentario, id_usuario)
