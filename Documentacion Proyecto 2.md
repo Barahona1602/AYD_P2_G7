@@ -2,6 +2,28 @@
 
 ![Mockup 1](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/1.png)
 
+![Mockup 2](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/2.png)
+
+![Mockup 3](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/3.png)
+
+![Mockup 4](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/4.png)
+
+![Mockup 5](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/5.png)
+
+![Mockup 6](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/6.png)
+
+![Mockup 7](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/7.png)
+
+![Mockup 8](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/8.png)
+
+![Mockup 9](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/9.png)
+
+![Mockup 10](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/10.png)
+
+![Mockup 11](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/11.png)
+
+![Mockup 12](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/12.png)
+
 
 **Casos de Uso de Alto Nivel:**
 
