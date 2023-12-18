@@ -29,7 +29,7 @@
 
 | **Registro de Usuario** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores, Clientes |
 | Descripción | Permite a los usuarios registrarse en la plataforma proporcionando información personal necesaria. |
 
@@ -41,7 +41,7 @@
 
 | **Página Principal Cuidador** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores |
 | Descripción | Muestra el perfil del cuidador después de iniciar sesión, permitiéndole editar la información personal. |
 
@@ -65,19 +65,19 @@
 
 | **Reseñas** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores |
 | Descripción | Permite a los cuidadores visualizar y eliminar comentarios de los dueños de mascotas. |
 
 | **Tienda** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores |
 | Descripción | Permite a los cuidadores agregar, actualizar, y eliminar productos en la tienda del hotel para que los clientes puedan comprar físicamente. |
 
 | **Página Principal Cliente** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Clientes |
 | Descripción | Muestra el perfil del cliente después de iniciar sesión, permitiéndole editar la información personal. |
 
@@ -95,7 +95,7 @@
 
 | **Reseñas** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Clientes |
 | Descripción | Permite a los clientes calificar y dejar comentarios sobre el hotel y el trato recibido por sus mascotas, con la opción de eliminar sus propios comentarios. |
 
@@ -107,7 +107,7 @@
 
 | **Tienda** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Clientes |
 | Descripción | Permite a los clientes visualizar productos en la tienda del hotel. |
 
@@ -115,7 +115,7 @@
 
 | **Registro de Usuario** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores, Clientes |
 | Descripción | Permite a los usuarios registrarse en la plataforma proporcionando información personal necesaria. |
 | **Flujo:** | |
@@ -147,7 +147,7 @@
 
 | **Página Principal Cuidador** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores |
 | Descripción | Muestra el perfil del cuidador después de iniciar sesión, permitiéndole editar la información personal. |
 | **Flujo:** | |
@@ -197,21 +197,21 @@
 
 | **Reseñas** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores |
 | **Flujo:** | |
 | Descripción | El cuidador visualiza y elimina comentarios de los dueños de mascotas. |
 
 | **Tienda** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Cuidadores |
 | **Flujo:** | |
 | Descripción | El cuidador agrega, actualiza y elimina productos en la tienda del hotel. |
 
 | **Página Principal Cliente** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Clientes |
 | Descripción | El cliente inicia sesión y accede a su página principal. Visualiza y edita la información de su perfil. Guarda los cambios si es necesario. |
 | **Flujo:** | |
@@ -246,7 +246,7 @@
 
 | **Reseñas** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Clientes |
 | **Flujo:** | |
 | 1 | El cliente califica y deja comentarios sobre el hotel y el trato recibido por sus mascotas. Elimina sus propios comentarios. |
@@ -260,7 +260,7 @@
 
 | **Tienda** | |
 | --- | --- |
-| Tipo | Primario |
+| Tipo | Secundario |
 | Roles | Clientes |
 | **Flujo:** | |
 | 1 | Permite a los clientes visualizar productos en la tienda del hotel. |
