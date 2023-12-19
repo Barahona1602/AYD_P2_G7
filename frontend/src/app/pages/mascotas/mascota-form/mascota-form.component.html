@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-10">
+      <h1>{{ isNew ? "Crear Mascota" : "Editar Mascota" }}</h1>
+    </div>
+    <div class="col-lg-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-outline-secondary" (click)="atras()">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <ng-container *ngIf="!loading">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <form [formGroup]="mascotaForm">
+          <div class="row mt-2">
+            <div class="col-lg">
+              <label class="form-label">Nombre(s)</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': notValidNombre}" formControlName="nombre">
+              <div class="invalid-feedback">
+                Nombre es requerido
+              </div>   
+            </div>
+            <div class="col-lg">
+              <label class="form-label">Edad</label>
+              <input type="number" class="form-control" [ngClass]="{'is-invalid': notValidEdad}" formControlName="edad">
+              <div class="invalid-feedback">
+                Edad es requerida
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-lg">
+              <label class="form-label">Especie</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': notValidEspecie}" formControlName="especie">
+              <div class="invalid-feedback">
+                Especie es requerida
+              </div>   
+            </div>
+            <div class="col-lg">
+              <label class="form-label">Raza</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': notValidRaza}" formControlName="raza">
+              <div class="invalid-feedback">
+                Raza es requerida
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-lg">
+              <label class="form-label">Comportamiento</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': notValidComprtamiento}" formControlName="comportamiento">
+              <div class="invalid-feedback">
+                Comportamiento es requerido
+              </div>   
+            </div>
+            <div class="col-lg">
+              <label class="form-label">Contacto de Veterinario</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': notValidContactoVet}" formControlName="contactoVet">
+              <div class="invalid-feedback">
+                Contacto del veterinario es requerida
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-lg">
+              <label class="form-label">Comentario</label>
+              <textarea cols="30" rows="5" class="form-control" [ngClass]="{'is-invalid': notValidComentario}" formControlName="comentario"></textarea>
+              <div class="invalid-feedback">
+                Comentario es requerido
+              </div>   
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mt-2">
+            <button type="button" class="btn btn-primary" [disabled]="mascotaForm.invalid" (click)="guardarMascota()">{{ isNew ? "Crear Mascota" : "Actualizar" }}</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+  </ng-container>
+</div>

@@ -35,33 +35,13 @@ router.post('/mascota', (req, res) => {
 });
 
 
-
-// Endpoint para obtener todas las mascotas de un usuario
-router.get('/mascota/:idUsuario', (req, res) => {
-    const idUsuario = req.params.idUsuario;
-
-    const selectQuery = 'SELECT * FROM MASCOTAS WHERE id_usuario=?';
-
-    connection.query(selectQuery, [idUsuario], (error, results) => {
-        if (error) {
-            console.error('Error al obtener mascotas:', error);
-            res.status(500).json({ mensaje: 'Error en el servidor' });
-        } else {
-            res.status(200).json({ mascotas: results });
-        }
-    });
-});
-
-
-
 // Endpoint para obtener una mascota específica de un usuario
-router.get('/mascota/:idUsuario/:idMascota', (req, res) => {
-    const idUsuario = req.params.idUsuario;
+router.get('/mascota/:idMascota', (req, res) => {
     const idMascota = req.params.idMascota;
 
-    const selectQuery = 'SELECT * FROM MASCOTAS WHERE id_usuario=? AND id_mascota=?';
+    const selectQuery = 'SELECT * FROM MASCOTAS WHERE id_mascota=?';
 
-    connection.query(selectQuery, [idUsuario, idMascota], (error, results) => {
+    connection.query(selectQuery, [idMascota], (error, results) => {
         if (error) {
             console.error('Error al obtener información de la mascota:', error);
             res.status(500).json({ mensaje: 'Error en el servidor' });
@@ -72,6 +52,22 @@ router.get('/mascota/:idUsuario/:idMascota', (req, res) => {
             } else {
                 res.status(404).json({ mensaje: 'Mascota no encontrada' });
             }
+        }
+    });
+});
+
+// Endpoint para obtener todas las mascotas de un usuario
+router.get('/mascota/usuario/:idUsuario', (req, res) => {
+    const idUsuario = req.params.idUsuario;
+
+    const selectQuery = 'SELECT * FROM MASCOTAS WHERE id_usuario=?';
+
+    connection.query(selectQuery, [idUsuario], (error, results) => {
+        if (error) {
+            console.error('Error al obtener mascotas:', error);
+            res.status(500).json({ mensaje: 'Error en el servidor' });
+        } else {
+            res.status(200).json({ mascotas: results });
         }
     });
 });
