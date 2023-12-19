@@ -26,7 +26,7 @@ router.post('/usuario', (req, res) => {
             const resend = new Resend('re_D24oPkNA_ABzaH3g78HRMxHRJzhdeDrym');
             console.log(correo)
             resend.emails.send({
-                from: '3560855890101@ingenieria.usac.edu.gt',
+                from: 'resend@pablobara.tech',
                 to: correo,
                 subject: 'Password inicial',
                 html: `<!DOCTYPE html>
