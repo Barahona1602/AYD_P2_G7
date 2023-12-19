@@ -40,6 +40,17 @@
             </div>
             <div class="row mt-2">
               <div class="col-lg">
+                <label class="form-label">Rol</label>
+                <select class="form-select" [ngClass]="{'is-invalid': notValidRol}" formControlName="rol">
+                  <option [ngValue]="null">Seleccionar Rol</option>
+                  <option value="Cliente">Cliente</option>
+                  <option value="Trabajador">Trabajador</option>
+                </select>
+                <div class="invalid-feedback">
+                  Rol es requerido
+                </div>
+              </div>
+              <div class="col-lg">
                 <label class="form-label">Correo Electrónico</label>
                 <input type="email" class="form-control" [ngClass]="{'is-invalid': notValidCorreo}" formControlName="correo">
                 <div class="invalid-feedback">

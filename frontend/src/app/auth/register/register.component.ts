@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
     apellido: [null, [Validators.required]],
     telefono: [null, [Validators.required]],
     fechaNacimiento: [null, [Validators.required]],
+    rol: [null, Validators.required],
     correo: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required, Validators.pattern(this.passwordRegex)]],
     passwordRepeat: [null, [Validators.required]],
@@ -50,6 +51,9 @@ export class RegisterComponent implements OnInit {
   get notValidCorreo(): boolean {
     return this.registerForm.get("correo").touched && this.registerForm.get("correo").invalid;
   }
+  get notValidRol(): boolean {
+    return this.registerForm.get("rol").touched && this.registerForm.get("rol").invalid;
+  }
   get notValidPassword(): boolean {
     return this.registerForm.get("password").touched && this.registerForm.get("password").invalid;
   }
@@ -70,9 +74,10 @@ export class RegisterComponent implements OnInit {
       nombre: this.registerForm.get("nombre").value,
       apellido: this.registerForm.get("apellido").value,
       telefono: this.registerForm.get("telefono").value,
+      rol: this.registerForm.get("rol").value,
       correo: this.registerForm.get("correo").value,
-      fechaNacimiento: this.registerForm.get("fechaNacimiento").value,
-      contraseña: this.registerForm.get("password").value,
+      fecha_nac: this.registerForm.get("fechaNacimiento").value,
+      password: this.registerForm.get("password").value,
     };
 
     this.authService.register(registerBody).pipe(take(1)).subscribe(resp => {

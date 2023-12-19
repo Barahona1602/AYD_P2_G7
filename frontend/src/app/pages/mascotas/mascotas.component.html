@@ -1,1 +1,41 @@
-<p>mascotas works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-10">
+      <h1>Mis Mascotas</h1>
+    </div>
+    <div class="col-lg-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-outline-primary" (click)="crearMascota()">Crear Mascota</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <table class="table" *ngIf="!loading">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Especie</th>
+        <th>Raza</th>
+        <th>Comportamiento</th>
+        <th>Contacto de Veterinario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mascota of mascotas">
+        <td>
+          <a [routerLink]="['/', 'mascotas', mascota.id_mascota]">{{mascota.nombre_mascota}}</a>
+        </td>
+        <td>{{mascota.edad}}</td>
+        <td>{{mascota.especie}}</td>
+        <td>{{mascota.raza}}</td>
+        <td>{{mascota.comportamiento}}</td>
+        <td>{{mascota.contacto_vet}}</td>
+        <td>
+          <button class="btn btn-sm btn-warning">Hospedar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

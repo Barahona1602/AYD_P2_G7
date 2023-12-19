@@ -1,1 +1,71 @@
-<p>mascota works!</p>
+<div class="container mt-5">
+    <div class="row" *ngIf="!loading">
+        <div class="col-md-11">
+            <h1>
+                {{ mascota.nombre_mascota }}
+            </h1>
+        </div>
+        <div class="col-lg-1">
+            <div class="d-grid gap-2">
+                <button class="btn btn-secondary" (click)="atras()">Regresar</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="!loading">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Nombre</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.nombre_mascota}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Edad</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.edad}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Especie</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.especie}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Raza</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.raza}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Comportamiento</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.comportamiento}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Contacto del Veterinario</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.contacto_vet}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <p class="lead">{{mascota.comentario}}</p>
+        </div>
+    </div>
+</div>

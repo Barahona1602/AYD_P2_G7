@@ -10,12 +10,12 @@
             <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="libros">Mascotas</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="mascotas">Mascotas</a>
           </li>
-          <li class="nav-item" *ngIf="authService.user['rol'] !== 'Cliente'">
+          <li class="nav-item" *ngIf="authService.user['rol'] === 'Cliente'">
             <a class="nav-link" routerLinkActive="active" routerLink="perfil">Hospedaje</a>
           </li>
-          <li class="nav-item" *ngIf="authService.user['rol'] !== 'Trabajador'">
+          <li class="nav-item" *ngIf="authService.user['rol'] === 'Trabajador'">
             <a class="nav-link" routerLinkActive="active" routerLink="biblioteca">Atencion</a>
           </li>
           <li class="nav-item">

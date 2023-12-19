@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    image: mysql:8
+    container_name: mysql-ayd1
+    restart: always
+    ports: 
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: "huellitafeliz"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "12345"
+    volumes:
+      - ./mysql_data:/var/lib/mysql

@@ -42,4 +42,15 @@ export class PagesService {
     return requestObservable;
   }
 
+  crearMascota(mascotaBody: any): Observable<any> {
+    return this.request(RequestMethod.POST, "mascota", mascotaBody);
+  }
+
+  getMascotas(idUsuario: string): Observable<any> {
+    return this.request(RequestMethod.GET, `mascota/usuario/${idUsuario}`);
+  }
+  getMascota(idMascota: string): Observable<any> {
+    return this.request(RequestMethod.GET, `mascota/${idMascota}`);
+  }
+
 }
