@@ -39,7 +39,26 @@ router.post('/mascota', (req, res) => {
 router.get('/mascota/:idMascota', (req, res) => {
     const idMascota = req.params.idMascota;
 
-    const selectQuery = 'SELECT * FROM MASCOTAS WHERE id_mascota=?';
+    const selectQuery = `
+    SELECT 
+    m.id_mascota,
+    m.comentario,
+    m.comportamiento,
+    m.contacto_vet,
+    m.edad,
+    m.especie,
+    am.estado,
+    am.fecha_atencion,
+    am.fecha_devolucion,
+    am.id_atencion,
+    m.id_usuario,
+    am.id_usuario AS id_trabajador,
+    m.nombre_mascota,
+    m.raza
+    FROM MASCOTAS m 
+    LEFT JOIN ATENCION_MASCOTAS am ON am.id_mascota = m.id_mascota AND am.estado NOT IN ('Devuelto', 'Recibido')
+    WHERE m.id_mascota=?
+    `;
 
     connection.query(selectQuery, [idMascota], (error, results) => {
         if (error) {
@@ -60,7 +79,9 @@ router.get('/mascota/:idMascota', (req, res) => {
 router.get('/mascota/usuario/:idUsuario', (req, res) => {
     const idUsuario = req.params.idUsuario;
 
-    const selectQuery = 'SELECT * FROM MASCOTAS WHERE id_usuario=?';
+    const selectQuery = `SELECT m.id_mascota, m.nombre_mascota, m.edad, m.especie, m.raza, m.comportamiento, m.contacto_vet, m.comportamiento, am.id_atencion, am.estado  FROM MASCOTAS m
+    left join ATENCION_MASCOTAS am ON am.id_mascota = m.id_mascota and am.estado in ('Comiendo', 'Paseando', 'Bañado', 'Tomando la siesta', 'Jugando', 'Hospedado')
+    WHERE m.id_usuario=?;`;
 
     connection.query(selectQuery, [idUsuario], (error, results) => {
         if (error) {

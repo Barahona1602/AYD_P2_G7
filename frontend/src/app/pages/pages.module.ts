@@ -11,6 +11,8 @@ import { EditarMascotaComponent } from './mascotas/editar-mascota/editar-mascota
 import { MascotaFormComponent } from './mascotas/mascota-form/mascota-form.component';
 import { MascotasComponent } from './mascotas/mascotas.component';
 import { MascotaComponent } from './mascotas/mascota/mascota.component';
+import { HospedajeComponent } from './mascotas/hospedaje/hospedaje.component';
+import { AtencionComponent } from './atencion/atencion.component';
 
 
 
@@ -22,7 +24,9 @@ import { MascotaComponent } from './mascotas/mascota/mascota.component';
     EditarMascotaComponent,
     MascotaFormComponent,
     MascotasComponent,
-    MascotaComponent
+    MascotaComponent,
+    HospedajeComponent,
+    AtencionComponent
   ],
   imports: [
     CommonModule,

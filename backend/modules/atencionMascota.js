@@ -14,7 +14,7 @@ router.get('/atencionMascota/:id_usuario', (req, res) => {
     }
 
     // Realizar la consulta en la base de datos
-    const sql = 'SELECT * FROM ATENCION_MASCOTAS WHERE id_usuario = ? AND estado NOT IN (?, ?)';
+    const sql = 'SELECT * FROM ATENCION_MASCOTAS am JOIN MASCOTAS m ON m.id_mascota = am.id_mascota WHERE am.id_usuario = ? AND am.estado NOT IN (?, ?)';
     const values = [idUsuario, 'Devuelto', 'Recibido'];
 
     connection.query(sql, values, (err, results) => {
@@ -38,7 +38,7 @@ router.get('/atencionMascotaConteo/:id_usuario', (req, res) => {
     }
 
     // Realizar la consulta en la base de datos
-    const sql = 'SELECT COUNT(*) FROM ATENCION_MASCOTAS WHERE id_usuario = ? AND estado NOT IN (?, ?)';
+    const sql = 'SELECT COUNT(*) AS conteo FROM ATENCION_MASCOTAS WHERE id_usuario = ? AND estado NOT IN (?, ?)';
     const values = [idUsuario, 'Devuelto', 'Recibido'];
 
     connection.query(sql, values, (err, results) => {

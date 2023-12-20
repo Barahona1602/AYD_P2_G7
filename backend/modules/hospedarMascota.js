@@ -7,7 +7,7 @@ const connection = require('../database.js');
 
 router.post('/hospedarMascota', (req, res) => {
     const { id_mascota, fecha_devolucion } = req.body;
-    const selectQuery = 'SELECT id_mascota FROM MASCOTAS WHERE id_mascota = ?';
+    const selectQuery = 'SELECT * FROM MASCOTAS WHERE id_mascota = ?';
     connection.query(selectQuery, [id_mascota], (selectError, selectResults) => {
         if (selectError) {
             console.error('Error al verificar la existencia de la mascota:', selectError);
