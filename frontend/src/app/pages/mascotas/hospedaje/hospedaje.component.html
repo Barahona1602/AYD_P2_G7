@@ -1,28 +1,25 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-lg-10">
-      <h1>Mis Mascotas</h1>
+      <h1>Mascotas en Atencion</h1>
     </div>
-    <div class="col-lg-2">
+    <!-- <div class="col-lg-2">
       <div class="d-grid gap-2">
         <button class="btn btn-outline-primary" (click)="crearMascota()" *ngIf="isCliente">Crear Mascota</button>
       </div>
-    </div>
+    </div> -->
   </div>
   <hr>
-  <div class="alert alert-warning" *ngIf="conteoTrabajador >= 2">
-    Ya tienes a tu cargo a dos mascotas actualmente.
-  </div>
   <table class="table" *ngIf="!loading">
     <thead class="table-dark">
       <tr>
         <th>Nombre</th>
+        <th>Estado Actual</th>
         <th>Edad</th>
         <th>Especie</th>
         <th>Raza</th>
-        <th>Comportamiento</th>
-        <th>Contacto de Veterinario</th>
-        <th *ngIf="!isCliente">Fecha de Devolución</th>
+        <th>Fecha de Hospedaje</th>
+        <th>Fecha de Devolución</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -31,20 +28,16 @@
         <td>
           <a [routerLink]="['/', 'mascotas', mascota.id_mascota]">{{mascota.nombre_mascota}}</a>
         </td>
+        <td>{{mascota.estado}}</td>
         <td>{{mascota.edad}}</td>
         <td>{{mascota.especie}}</td>
         <td>{{mascota.raza}}</td>
-        <td>{{mascota.comportamiento}}</td>
-        <td>{{mascota.contacto_vet}}</td>
-        <td *ngIf="isCliente">
-          <button class="btn btn-sm btn-warning" *ngIf="!mascota.id_atencion" [disabled]="mascota.id_atencion" (click)="hospedarMascota(mascota)">Hospedar</button>
-          <span class="badge text-bg-success" *ngIf="mascota.id_atencion">Hospedado</span>
-        </td>
-        <td *ngIf="!isCliente">
+        <td>{{ mascota.fecha_atencion | date }}</td>
+        <td>
           {{ mascota.fecha_devolucion | date }}
         </td>
-        <td *ngIf="!isCliente">
-          <button class="btn btn-sm btn-primary" [disabled]="conteoTrabajador >= 2" (click)="atenderMascota(mascota)">Atender</button>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="retornarMascota(mascota)">Detornar Mascota</button>
         </td>
       </tr>
     </tbody>

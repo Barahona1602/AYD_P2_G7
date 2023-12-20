@@ -6,8 +6,9 @@ router.get('/mascotasHospedadas', (req, res) => {
     // Consulta SQL para obtener todas las mascotas hospedadas
     const sql = `
         SELECT *
-        FROM ATENCION_MASCOTAS
-        WHERE estado = 'Hospedado';
+        FROM ATENCION_MASCOTAS am
+        JOIN MASCOTAS m ON m.id_mascota = am.id_mascota 
+        WHERE am.estado = 'Hospedado' AND am.id_usuario IS NULL;
     `;
 
     connection.query(sql, (err, results) => {

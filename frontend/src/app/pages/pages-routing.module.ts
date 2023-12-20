@@ -5,6 +5,7 @@ import { MascotasComponent } from "./mascotas/mascotas.component";
 import { CrearMascotaComponent } from "./mascotas/crear-mascota/crear-mascota.component";
 import { EditarMascotaComponent } from "./mascotas/editar-mascota/editar-mascota.component";
 import { MascotaComponent } from "./mascotas/mascota/mascota.component";
+import { HospedajeComponent } from "./mascotas/hospedaje/hospedaje.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "mascotas/nueva", component: CrearMascotaComponent },
   { path: "mascotas/editar/:id", component: EditarMascotaComponent },
   { path: "mascotas/:id", component: MascotaComponent },
+  { path: "hospedaje", component: HospedajeComponent },
   { path: "**", redirectTo: "auth/login" },
 ];
 

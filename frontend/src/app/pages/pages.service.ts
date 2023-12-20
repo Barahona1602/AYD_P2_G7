@@ -53,4 +53,24 @@ export class PagesService {
     return this.request(RequestMethod.GET, `mascota/${idMascota}`);
   }
 
+  hospedarMascota(hospedajeBody: any): Observable<any> {
+    return this.request(RequestMethod.POST, "hospedarMascota", hospedajeBody);
+  }
+
+  getConteoTrabajador(idTrabajador: string): Observable<any> {
+    return this.request(RequestMethod.GET, `atencionMascotaConteo/${idTrabajador}`);
+  }
+  getMascotasHospedadas(): Observable<any> {
+    return this.request(RequestMethod.GET, "mascotasHospedadas");
+  }
+  atenderMascota(idAtencion: string, idUsuario: string): Observable<any> {
+    return this.request(RequestMethod.PUT, `atencionMascotas/${idAtencion}/${idUsuario}`);
+  }
+  getMascotasEnAtencion(idUsuario: string): Observable<any> {
+    return this.request(RequestMethod.GET, `atencionMascota/${idUsuario}`);
+  }
+
+  getUsuario(idUsuario: string): Observable<any> {
+    return this.request(RequestMethod.GET, `usuario/${idUsuario}`);
+  }
 }
