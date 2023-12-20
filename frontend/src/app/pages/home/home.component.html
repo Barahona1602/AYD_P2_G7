@@ -1,0 +1,40 @@
+<main class="container mt-5">
+    <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+          <span class="fs-4">Bienvenido {{ authService.user['nombre'] }} {{ authService.user['apellido'] }}</span>
+        </a>
+      </header>
+    <div class="row align-items-md-strech">
+        <div class="col-md">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+                <h2>Mascotas</h2>
+                <p>En la sección de mascotas puedes ver las mascotas que tienes registradas en tu cuenta, editar su información y hospedarlas.</p>
+                <button class="btn btn-outline-light" (click)="irAMascotas()">Ver Mascotas</button>
+            </div>
+        </div>
+        <div class="col-md" *ngIf="authService.user['rol'] === 'Trabajador'">
+            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+                <h2>Atención</h2>
+                <p>En atención puedes ver las mascotas que tienes actualmente hospedadas en el hotel y ver su estado actual. De la misma manera puedes ir a recogerlos si lo deseas.</p>
+                <button class="btn btn-outline-secondary" type="button" (click)="irAHospedajes()">Ir a Hospedajes</button>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+                <h2>Perfil</h2>
+                <p>En la sección de perfil puedes ver la información que tienes registrada en HuellitasFeliz y la puedes editar en caso lo quieras.</p>
+                <button class="btn btn-outline-secondary" type="button" (click)="irAPerfil()">Ir a Perfil</button>
+            </div>
+        </div>
+        <!-- <div class="col-md">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+                <h2>Reseñas</h2>
+                <p>En el apartado de reseñas puedes dejar tu opinion sobre el servicio que has recibido y la calificación que le das a HuellitasFeliz. También puedes ver las reseñas que otros usuarios han realizado sobre nuestro servicio.</p>
+                <button class="btn btn-outline-light">Ver Reseñas</button>
+            </div>
+        </div> -->
+    </div>
+    <footer class="pt-3 mt-4 text-body-secondary border-top">
+        &copy; 2023
+      </footer>
+</main>

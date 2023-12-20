@@ -1,0 +1,111 @@
+<div class="container mt-5">
+    <div class="row" *ngIf="!loading">
+        <div class="col-md-11">
+            <h1>
+                {{ mascota.nombre_mascota }}
+            </h1>
+        </div>
+        <div class="col-lg-1">
+            <div class="d-grid gap-2">
+                <button class="btn btn-secondary" (click)="atras()">Regresar</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="!loading">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Nombre</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.nombre_mascota}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Edad</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.edad}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Especie</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.especie}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Raza</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.raza}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Comportamiento</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.comportamiento}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Contacto del Veterinario</dt>
+                </div>
+                <div class="col-lg">
+                    <p>{{mascota.contacto_vet}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <p class="lead">{{mascota.comentario}}</p>
+        </div>
+    </div>
+    <ng-container *ngIf="estaHospedado && !this.loading">
+      <div class="row mt-3">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <h4>Detalles de Hospedaje</h4>
+          <hr>
+          <table class="table table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Retorno</th>
+                <th>Cuidador</th>
+                <th>Telefono de Cuidador</th>
+                <th>Estado Actual</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{mascota.fecha_atencion | date}}</td>
+                <td>{{mascota.fecha_devolucion | date}}</td>
+                <td *ngIf="hayTrabajador">{{ trabajador.nombre }} {{ trabajador.apellido }}</td>
+                <td *ngIf="!hayTrabajador">Aun no hay cuidador designado.</td>
+                <td>{{ hayTrabajador ? trabajador.telefono : "-" }}</td>
+                <td>
+                  <span class="badge text-bg-success">
+                    {{ mascota.estado }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-sm btn-primary" *ngIf="authService.user['rol'] === 'Cliente'" (click)="recogerMascota()">Recoger Mascota</button>
+            <button class="btn btn-sm btn-warning" *ngIf="authService.user['rol'] === 'Trabajador' && authService.user['id_usuario'] === mascota.id_trabajador" (click)="actualizarEstado()">Actualizar Estado</button>
+          </div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+
+    </ng-container>
+</div>
