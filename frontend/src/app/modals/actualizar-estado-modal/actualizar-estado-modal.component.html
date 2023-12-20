@@ -1,0 +1,31 @@
+<div style="width: 100%;" class="p-4">
+  <div class="row">
+      <div class="col-md-10">
+          <h3>Hospedar Mascota</h3>
+      </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-lg">
+          <p>Escoge el estado al que quieres actualizar la atención de {{nombreMascota}}</p>
+      </div>
+  </div>
+  
+  <div class="row my-3">
+    <div class="col-lg-3">
+      <label class="form-label">Estado: </label>      
+    </div>
+    <div class="col-lg-7">
+      <select class="form-select" [(ngModel)]="estado">
+        <option [ngValue]="null">Escoger Estado</option>
+        <option *ngFor="let est of estados" [value]="est">{{est}}</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="d-flex justify-content-end">
+      <button class="btn btn-secondary mx-2" (click)="activeModal.dismiss()">Cancelar</button>
+      <button class="btn btn-primary" [disabled]="!estado" (click)="activeModal.close(estado)">Confirmar</button>
+  </div>
+
+</div>

@@ -28,7 +28,11 @@
         <td>
           <a [routerLink]="['/', 'mascotas', mascota.id_mascota]">{{mascota.nombre_mascota}}</a>
         </td>
-        <td>{{mascota.estado}}</td>
+        <td>
+          <span class="badge text-bg-success">
+            {{mascota.estado}}
+          </span>
+        </td>
         <td>{{mascota.edad}}</td>
         <td>{{mascota.especie}}</td>
         <td>{{mascota.raza}}</td>
@@ -37,12 +41,12 @@
           {{ mascota.fecha_devolucion | date }}
         </td>
         <td>
-          <button class="btn btn-sm btn-warning" (click)="retornarMascota(mascota)">Detornar Mascota</button>
+          <button class="btn btn-sm btn-warning" (click)="retornarMascota(mascota)">Retornar Mascota</button>
         </td>
       </tr>
     </tbody>
   </table>
   <div class="alert alert-info" *ngIf="!loading && mascotas.length === 0">
-    No hay mascotas hospedadas para atender.
+    No tienes mascotas para atender por el momento.
   </div>
 </div>
