@@ -4,7 +4,7 @@
 ![Diagrama Entidad-Relación](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/Relational%20Proyecto%202%20AyD1.png)
 
 
-**Casos de Uso de Alto Nivel:**
+**Mock-ups**
 
 ![Mockup 1](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/1.png)
 
@@ -123,7 +123,9 @@
 | Roles | Clientes |
 | Descripción | Permite a los clientes visualizar productos en la tienda del hotel. |
 
+
 **Casos de Uso Expandidos:**
+
 
 | **Registro de Usuario** | |
 | --- | --- |
