@@ -1,3 +1,9 @@
+**Diagrama Entidad-Relación**
+
+
+![Diagrama Entidad-Relación](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/Relational%20Proyecto%202%20AyD1.png)
+
+
 **Casos de Uso de Alto Nivel:**
 
 ![Mockup 1](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/1.png)
