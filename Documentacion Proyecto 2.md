@@ -25,6 +25,12 @@
 ![Mockup 12](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/12.png)
 
 
+**Diagrama de Casos de Uso**
+
+
+![Diagrama de Casos de Uso](https://github.com/Barahona1602/AYD_P2_G7/blob/feature202110773/dataBase/Mockup%20Huellita%20Feliz/Diagrama%20de%20Casos%20de%20Uso%20Proyecto2.png)
+
+
 **Casos de Uso de Alto Nivel:**
 
 | **Registro de Usuario** | |
