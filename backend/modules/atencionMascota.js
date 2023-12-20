@@ -15,7 +15,7 @@ router.get('/atencionMascota/:id_usuario', (req, res) => {
 
     // Realizar la consulta en la base de datos
     const sql = 'SELECT * FROM ATENCION_MASCOTAS am JOIN MASCOTAS m ON m.id_mascota = am.id_mascota WHERE am.id_usuario = ? AND am.estado NOT IN (?, ?)';
-    const values = [idUsuario, 'Devuelto', 'Recibido'];
+    const values = [idUsuario, 'Devuelto', 'Recogido'];
 
     connection.query(sql, values, (err, results) => {
         if (err) {
@@ -39,7 +39,7 @@ router.get('/atencionMascotaConteo/:id_usuario', (req, res) => {
 
     // Realizar la consulta en la base de datos
     const sql = 'SELECT COUNT(*) AS conteo FROM ATENCION_MASCOTAS WHERE id_usuario = ? AND estado NOT IN (?, ?)';
-    const values = [idUsuario, 'Devuelto', 'Recibido'];
+    const values = [idUsuario, 'Devuelto', 'Recogido'];
 
     connection.query(sql, values, (err, results) => {
         if (err) {
@@ -52,9 +52,8 @@ router.get('/atencionMascotaConteo/:id_usuario', (req, res) => {
     });
 });
 
-router.put('/atencionMascota/:id_atencion/:id_usuario', (req, res) => {
+router.put('/atencionMascota/:id_atencion', (req, res) => {
     const idAtencion = req.params.id_atencion;
-    const idUsuario = req.params.id_usuario;
     const nuevoEstado = req.body.estado;
 
     // Validar que se proporcionó un nuevo estado
@@ -63,8 +62,8 @@ router.put('/atencionMascota/:id_atencion/:id_usuario', (req, res) => {
     }
 
     // Actualizar el estado de la atención de mascota en la base de datos
-    const sql = 'UPDATE ATENCION_MASCOTAS SET estado = ? WHERE id_atencion = ? AND id_usuario = ?';
-    const values = [nuevoEstado, idAtencion, idUsuario];
+    const sql = 'UPDATE ATENCION_MASCOTAS SET estado = ? WHERE id_atencion = ?';
+    const values = [nuevoEstado, idAtencion];
 
     connection.query(sql, values, (err, results) => {
         if (err) {

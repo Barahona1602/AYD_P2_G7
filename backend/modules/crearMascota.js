@@ -56,7 +56,7 @@ router.get('/mascota/:idMascota', (req, res) => {
     m.nombre_mascota,
     m.raza
     FROM MASCOTAS m 
-    LEFT JOIN ATENCION_MASCOTAS am ON am.id_mascota = m.id_mascota AND am.estado NOT IN ('Devuelto', 'Recibido')
+    LEFT JOIN ATENCION_MASCOTAS am ON am.id_mascota = m.id_mascota AND am.estado NOT IN ('Devuelto', 'Recogido')
     WHERE m.id_mascota=?
     `;
 

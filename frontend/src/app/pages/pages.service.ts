@@ -73,4 +73,11 @@ export class PagesService {
   getUsuario(idUsuario: string): Observable<any> {
     return this.request(RequestMethod.GET, `usuario/${idUsuario}`);
   }
+
+  actualizarEstadoMascota(idAtencion: string, actualizacionBody: any): Observable<any> {
+    return this.request(RequestMethod.PUT, `atencionMascota/${idAtencion}`, actualizacionBody);
+  }
+  updateUsuario(idUsuario: string, usuario: any): Observable<any> {
+    return this.request(RequestMethod.PUT, `usuario/${idUsuario}`, usuario);
+  }
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PagesService } from '../../pages.service';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmActionComponent } from 'src/app/modals/confirm-action/confirm-action.component';
+import { ActualizarEstadoModalComponent } from 'src/app/modals/actualizar-estado-modal/actualizar-estado-modal.component';
 
 @Component({
   selector: 'app-mascota',
@@ -15,12 +18,15 @@ export class MascotaComponent implements OnInit {
   mascota: any;
   estaHospedado: boolean;
   trabajador: any;
+  hayTrabajador: boolean;
 
   constructor(
     private pagesService: PagesService,
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    public authService: AuthService,
+    private modalService: NgbModal,
+    private router: Router
   ) {}
   
   ngOnInit(): void {
@@ -39,11 +45,13 @@ export class MascotaComponent implements OnInit {
           this.pagesService.getUsuario(this.mascota.id_trabajador).subscribe(resp => {
             console.log(resp);
             this.trabajador = resp.usuario;
+            this.hayTrabajador = true;
             this.loading = false;
           }, err => {
             console.log(err);
           });
         } else {
+          this.hayTrabajador = false;
           this.loading = false;
         }
       }, err => {
@@ -54,5 +62,32 @@ export class MascotaComponent implements OnInit {
 
   atras(): void {
     this.location.back();
+  }
+
+  recogerMascota(): void {
+    const modal = this.modalService.open(ConfirmActionComponent);
+    modal.componentInstance.title = "Recoger Mascota";
+    modal.componentInstance.description = `¿Estas seguro que quieres recoger a ${this.mascota.nombre_mascota}?`;
+    modal.result.then(result => {
+      this.pagesService.actualizarEstadoMascota(this.mascota.id_atencion, { estado: 'Recogido' }).subscribe(resp => {
+        console.log(resp);
+        this.router.navigate(["mascotas"]);
+      }, err => {
+        console.log(err);
+      });
+    }, dismiss => {});
+  }
+
+  actualizarEstado(): void {
+    const modal = this.modalService.open(ActualizarEstadoModalComponent);
+    modal.componentInstance.nombreMascota = this.mascota.nombre_mascota;
+    modal.result.then(estado => {
+      this.pagesService.actualizarEstadoMascota(this.mascota.id_atencion, { estado }).subscribe(resp => {
+        console.log(resp);
+        this.getMascota();
+      }, err => {
+        console.log(err);
+      });
+    }, dismiss => {});
   }
 }
