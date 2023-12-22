@@ -43,4 +43,28 @@ router.get('/tienda/:idProducto', (req, res) => {
   }
 });
 
+//crear los productos
+router.post('/tienda', (req, res) => {
+  const { nombre, precio, descripcion, cantidad, imagen } = req.body;
+
+  // Validar que se proporcionaron todos los campos necesarios
+  if (!nombre || !precio || !descripcion || !cantidad || !imagen) {
+      return res.status(400).json({ mensaje: 'Faltan campos obligatorios en la solicitud' });
+  }
+
+  // Insertar el nuevo producto en la base de datos
+  const sql = 'INSERT INTO PRODUCTOS (nombre, precio, descripcion, cantidad, imagen) VALUES (?, ?, ?, ?, ?)';
+  const values = [nombre, precio, descripcion, cantidad, imagen];
+
+  connection.query(sql, values, (err, results) => {
+      if (err) {
+          console.error('Error al insertar producto en la base de datos:', err);
+          res.status(500).json({ mensaje: 'Error al registrar producto' });
+      } else {
+          console.log('Producto registrado con éxito');
+          res.status(201).json({ mensaje: 'Producto registrado con éxito' });
+      }
+  });
+});
+
 module.exports = router;

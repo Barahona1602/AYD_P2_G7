@@ -217,4 +217,46 @@ router.get('/resenaAtencion', async (req, res) => {
   }
 });
 
+// get de reseñas por trabajador
+router.get('/resenaAtencionTrabajador/:idUsuario', async (req, res) => {
+  try {
+    const idUsuario = req.params.idUsuario;
+
+    // Obtener las id_atencion asociadas al id_usuario en la tabla ATENCION_MASCOTAS
+    const atencionesQuery = 'SELECT id_atencion FROM ATENCION_MASCOTAS WHERE id_usuario = ?';
+    connection.query(atencionesQuery, [idUsuario], (error, atencionesResults) => {
+      if (error) {
+        console.error('Error al obtener las id_atencion para el usuario:', error);
+        res.status(500).json({ error: 'Error en el servidor' });
+      } else {
+        if (atencionesResults.length === 0) {
+          res.status(404).json({ error: 'No se encontraron atenciones para el usuario' });
+        } else {
+          // Obtener las reseñas de atención para las id_atencion obtenidas
+          const idAtenciones = atencionesResults.map((atencion) => atencion.id_atencion);
+          const reseñasQuery = 'SELECT ra.* FROM RESENAS_ATENCION ra JOIN ATENCION_MASCOTAS am ON ra.id_atencion = am.id_atencion WHERE am.id_usuario = ?';
+          connection.query(reseñasQuery, [idUsuario], (error, reseñasResults) => {
+            if (error) {
+              console.error('Error al obtener las reseñas de atención para el usuario:', error);
+              res.status(500).json({ error: 'Error en el servidor' });
+            } else {
+              if (reseñasResults.length === 0) {
+                res.status(404).json({ error: 'No se encontraron reseñas de atención para el usuario' });
+              } else {
+                res.status(200).json(reseñasResults);
+              }
+            }
+          });
+        }
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener las reseñas de atención para el usuario' });
+  }
+});
+
+
+
+
 module.exports = router;
