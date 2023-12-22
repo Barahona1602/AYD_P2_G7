@@ -16,6 +16,7 @@ const hospedarMascota = require('./modules/hospedarMascota');
 const seleccionMascota = require('./modules/seleccionMascota');
 const atencionMascota = require('./modules/atencionMascota');
 const resena = require('./modules/resena');
+const tienda = require('./modules/tienda');
 
 
 
@@ -38,6 +39,7 @@ app.use('/', hospedarMascota);
 app.use('/', seleccionMascota);
 app.use('/', atencionMascota);
 app.use('/', resena);
+app.use('/', tienda);
 
 
 
