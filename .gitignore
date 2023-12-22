@@ -10,6 +10,7 @@
 /frontend/node_modules
 npm-debug.log
 yarn-error.log
+/frontend/.angular
 
 # IDEs and editors
 /frontend/.idea/
@@ -40,3 +41,6 @@ yarn-error.log
 # System files
 /frontend/.DS_Store
 /frontend/Thumbs.db
+
+# Docker
+/frontend/docker/mysql_data
