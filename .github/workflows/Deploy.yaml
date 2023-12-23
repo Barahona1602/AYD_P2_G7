@@ -18,15 +18,14 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '14'
-        
-    - name: Change to backend directory
-      run: cd backend
+
 
     - name: Install dependencies
-      run: npm install
+      run: cd backend, npm install
 
     - name: Build
-      run: npm run build
+      run: cd backend, npm run build
+      
 
     - name: Run tests
       run: npm test
