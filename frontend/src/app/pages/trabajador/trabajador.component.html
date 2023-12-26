@@ -1,0 +1,109 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-10" *ngIf="!loading">
+            <h1>{{trabajador.nombre}} {{trabajador.apellido}}</h1>
+        </div>
+        <div class="col-lg">
+            <div class="d-grid gap-2">
+                <button class="btn btn-secondary" (click)="atras()">Atras</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="!loading">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <img src="../../../assets//Trabajador.jpg" class="img-fluid rounded">
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Nombre</dt>
+                </div>
+                <div class="col-lg">
+                    {{trabajador.nombre}} {{trabajador.apellido}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Fecha de Nacimiento</dt>
+                </div>
+                <div class="col-lg">
+                    {{trabajador.fecha_nac | date}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Telefono</dt>
+                </div>
+                <div class="col-lg">
+                    {{trabajador.telefono}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dt class="form-label">Correo</dt>
+                </div>
+                <div class="col-lg">
+                    {{trabajador.correo}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between">
+                <h3>Comentarios</h3>
+                <button class="btn btn-primary" *ngIf="!showComentarioInput && authService.user['rol'] !== 'Trabajador' && idAtencion" (click)="showComentarioInput = true">Comentar</button>
+            </div>
+            <hr>
+            <ng-container *ngIf="showComentarioInput">
+                <div class="row">
+                    <div class="col">
+                        <textarea class="form-control" placeholder="Escribe tu reseña del cuidador." rows="5" cols="30" [(ngModel)]="nuevoComentario"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-2" style="width: 100%;">
+                    <div style="width: 50%;">
+                        <div class="row" style="width: 100%;">
+                            <div class="col-lg-3"><p>Calificacion: </p></div>
+                            <div class="col-lg-3">
+                                <input type="number" max="5" min="0" class="form-control form-control-sm" [(ngModel)]="calification">
+                            </div>
+                            <div class="col-lg">/5</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary mx-3" (click)="showComentarioInput = false">Cancelar</button>
+                        <button class="btn btn-primary" [disabled]="calification === 0 || nuevoComentario.length === 0" (click)="publicarComentario()">Publicar</button>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="card mt-3" *ngFor="let resena of resenas">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            {{resena.nombre}} {{resena.apellido}} <small>({{resena.calificacion}}/5)</small>
+                        </div>
+                        <div class="col-lg" *ngIf="resena.id_usuario === authService.user['id_usuario']">
+                            <div class="d-grid gap-2">
+                                <!-- <button class="btn btn-outline-danger" (click)="eliminarComentario(comentario.id_comentario)">Eliminar</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><em>{{resena.resena}}</em></p>
+                </div>
+            </div>
+            <ng-container *ngIf="!loading">
+                <div class="alert alert-warning mt-2" *ngIf="resenas.length === 0">
+                    <p>Aun no hay reseñas del trabajador.</p>
+                </div>
+            </ng-container>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

@@ -177,20 +177,20 @@ router.delete('/resenaAtencion/:id_resena', async (req, res) => {
   
 
 // Obtener reseñas de atención por usuario (GET)
-router.get('/resenaAtencion/:idAtencion', async (req, res) => {
+router.get('/resenaAtencion/:idTrabajador', async (req, res) => {
   try {
-    const idAtencion = req.params.idAtencion;
-    const query = 'SELECT * FROM RESENAS_ATENCION WHERE id_atencion = ?';
-    connection.query(query, [idAtencion], (error, results) => {
+    const idTrabajador = req.params.idTrabajador;
+    const query = 'SELECT * FROM RESENAS_ATENCION ra JOIN ATENCION_MASCOTAS am ON am.id_atencion = ra.id_atencion JOIN MASCOTAS m ON m.id_mascota = am.id_mascota JOIN USUARIOS u ON u.id_usuario = m.id_usuario WHERE am.id_usuario = ?';
+    connection.query(query, [idTrabajador], (error, results) => {
       if (error) {
         console.error('Error al obtener las reseñas de atención para el usuario:', error);
         res.status(500).json({ error: 'Error en el servidor' });
       } else {
-        if (results.length === 0) {
-          res.status(404).json({ error: 'No se encontraron reseñas de atención para el usuario' });
-        } else {
-          res.status(200).json(results);
-        }
+        res.status(200).json(results);
+        // if (results.length === 0) {
+        //   res.status(404).json({ error: 'No se encontraron reseñas de atención para el usuario' });
+        // } else {
+        // }
       }
     });
   } catch (error) {

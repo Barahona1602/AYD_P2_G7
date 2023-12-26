@@ -13,6 +13,7 @@ import { MascotasComponent } from './mascotas/mascotas.component';
 import { MascotaComponent } from './mascotas/mascota/mascota.component';
 import { HospedajeComponent } from './mascotas/hospedaje/hospedaje.component';
 import { AtencionComponent } from './atencion/atencion.component';
+import { TrabajadorComponent } from './trabajador/trabajador.component';
 
 
 
@@ -26,7 +27,8 @@ import { AtencionComponent } from './atencion/atencion.component';
     MascotasComponent,
     MascotaComponent,
     HospedajeComponent,
-    AtencionComponent
+    AtencionComponent,
+    TrabajadorComponent
   ],
   imports: [
     CommonModule,

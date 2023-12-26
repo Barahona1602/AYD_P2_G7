@@ -80,4 +80,10 @@ export class PagesService {
   updateUsuario(idUsuario: string, usuario: any): Observable<any> {
     return this.request(RequestMethod.PUT, `usuario/${idUsuario}`, usuario);
   }
+  getResenasDeTrabajador(idTrabajador: string): Observable<any> {
+    return this.request(RequestMethod.GET, `resenaAtencion/${idTrabajador}`);
+  }
+  publicarResenaDeTrabajador(resenaBody: any): Observable<any> {
+    return this.request(RequestMethod.POST, "resenaAtencion", resenaBody);
+  }
 }
