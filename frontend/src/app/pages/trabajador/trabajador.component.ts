@@ -3,6 +3,8 @@ import { AuthService } from '../../auth/auth.service';
 import { PagesService } from '../pages.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmActionComponent } from 'src/app/modals/confirm-action/confirm-action.component';
 
 @Component({
   selector: 'app-trabajador',
@@ -24,7 +26,8 @@ export class TrabajadorComponent implements OnInit{
     public readonly authService: AuthService,
     private readonly pagesService: PagesService,
     private location: Location,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly modalService: NgbModal
   ) {}
   
   ngOnInit(): void {
@@ -79,6 +82,20 @@ export class TrabajadorComponent implements OnInit{
     }, err => {
       console.log(err);
     });
+  }
+  
+  eliminarResena(resena: any): void {
+    const modal = this.modalService.open(ConfirmActionComponent);
+    modal.componentInstance.title = "Eliminar Reseña";
+    modal.componentInstance.description = "¿Esás seguro que quieres eliminar el comentario actual?";
+    modal.result.then(result => {
+      this.pagesService.eliminarResenaAtencion(resena.id_resena).subscribe(resp => {
+        console.log(resp);
+        this.getTrabajador();
+      }, err => {
+        console.log(err);
+      });
+    }, dismiss => {});
   }
 
   atras(): void {

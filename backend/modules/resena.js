@@ -94,7 +94,7 @@ router.get('/resenaHotel/:idUsuario', async (req, res) => {
 // Obtener todas las reseñas de hotel (GET)
 router.get('/resenaHotel', async (req, res) => {
   try {
-    const query = 'SELECT * FROM RESENAS_HOTEL';
+    const query = 'SELECT * FROM RESENAS_HOTEL rh JOIN USUARIOS u ON u.id_usuario = rh.id_usuario;';
     connection.query(query, (error, results) => {
       if (error) {
         console.error('Error al obtener las reseñas de hotel:', error);

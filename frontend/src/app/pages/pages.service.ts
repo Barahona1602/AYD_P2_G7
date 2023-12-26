@@ -86,4 +86,22 @@ export class PagesService {
   publicarResenaDeTrabajador(resenaBody: any): Observable<any> {
     return this.request(RequestMethod.POST, "resenaAtencion", resenaBody);
   }
+  getResenasDeHotel(): Observable<any> {
+    return this.request(RequestMethod.GET, "resenaHotel");
+  }
+  crearResenaDeHotel(resena: any): Observable<any> {
+    return this.request(RequestMethod.POST, "resenaHotel", resena);
+  }
+  eliminarResenaHotel(idResena: string): Observable<any> {
+    return this.request(RequestMethod.DELETE, `resenaHotel/${idResena}`);
+  }
+  eliminarResenaAtencion(idResena: string): Observable<any> {
+    return this.request(RequestMethod.DELETE, `resenaAtencion/${idResena}`);
+  }
+  getProductos(): Observable<any> {
+    return this.request(RequestMethod.GET, "tienda");
+  }
+  crearProducto(producto: any): Observable<any> {
+    return this.request(RequestMethod.POST, "tienda", producto);
+  }
 }

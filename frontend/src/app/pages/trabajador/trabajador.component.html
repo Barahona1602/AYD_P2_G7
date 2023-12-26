@@ -87,9 +87,9 @@
                         <div class="col-lg-10">
                             {{resena.nombre}} {{resena.apellido}} <small>({{resena.calificacion}}/5)</small>
                         </div>
-                        <div class="col-lg" *ngIf="resena.id_usuario === authService.user['id_usuario']">
+                        <div class="col-lg" *ngIf="authService.user['rol'] === 'Trabajador'">
                             <div class="d-grid gap-2">
-                                <!-- <button class="btn btn-outline-danger" (click)="eliminarComentario(comentario.id_comentario)">Eliminar</button> -->
+                                <button class="btn btn-outline-danger btn-sm" (click)="eliminarResena(resena)">Eliminar</button>
                             </div>
                         </div>
                     </div>
