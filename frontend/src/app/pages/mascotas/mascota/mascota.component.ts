@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmActionComponent } from 'src/app/modals/confirm-action/confirm-action.component';
 import { ActualizarEstadoModalComponent } from 'src/app/modals/actualizar-estado-modal/actualizar-estado-modal.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-mascota',
@@ -19,6 +20,7 @@ export class MascotaComponent implements OnInit {
   estaHospedado: boolean;
   trabajador: any;
   hayTrabajador: boolean;
+  poderRecogerMascota: boolean;
 
   constructor(
     private pagesService: PagesService,
@@ -41,6 +43,9 @@ export class MascotaComponent implements OnInit {
         console.log(resp);
         this.mascota = resp.mascota;
         this.estaHospedado = this.mascota.id_atencion !== null && this.mascota.id_atencion !== undefined;
+        const momentoDeRetorno = moment(this.mascota.fecha_devolucion);
+        const ahorita = moment();
+        this.poderRecogerMascota = ahorita >= momentoDeRetorno;
         if (this.mascota.id_trabajador) {
           this.pagesService.getUsuario(this.mascota.id_trabajador).subscribe(resp => {
             console.log(resp);
@@ -71,7 +76,7 @@ export class MascotaComponent implements OnInit {
     modal.result.then(result => {
       this.pagesService.actualizarEstadoMascota(this.mascota.id_atencion, { estado: 'Recogido' }).subscribe(resp => {
         console.log(resp);
-        this.router.navigate(["mascotas"]);
+        this.router.navigate(["trabajador", this.mascota.id_trabajador], { queryParams: { idAtencion: this.mascota.id_atencion } });
       }, err => {
         console.log(err);
       });
@@ -89,5 +94,9 @@ export class MascotaComponent implements OnInit {
         console.log(err);
       });
     }, dismiss => {});
+  }
+
+  verTrabajador(): void {
+    this.router.navigate(["trabajador", this.mascota.id_trabajador], { queryParams: { idAtencion: this.mascota.id_atencion } })
   }
 }

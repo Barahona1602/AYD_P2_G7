@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-10">
+      <h1>
+        Reseñas del Hotel
+      </h1>
+    </div>
+    <div class="col-lg-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" (click)="crearResena()">Deja tu Reseña</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <ng-container *ngIf="!loading">
+        <div class="card mt-3" *ngFor="let resena of resenas">
+          <div class="card-header">
+              <div class="row">
+                  <div class="col-lg-10">                  
+                    {{resena.nombre}} {{resena.apellido}} <small>({{resena.calificacion}}/5)</small>
+                  </div>
+                  <div class="col-lg" *ngIf="resena.id_usuario === authService.user['id_usuario']">
+                      <div class="d-grid gap-2">
+                          <button class="btn btn-outline-danger btn-sm" (click)="eliminarResena(resena)">Eliminar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card-body">
+              <p><em>{{resena.resena}}</em></p>
+          </div>
+      </div>
+      <div class="alert alert-warning" *ngIf="resenas.length === 0">
+        <p>Aún no hay reseñas del Hotel.</p>
+      </div>
+      </ng-container>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

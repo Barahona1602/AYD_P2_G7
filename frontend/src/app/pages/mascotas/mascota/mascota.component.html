@@ -88,7 +88,11 @@
               <tr>
                 <td>{{mascota.fecha_atencion | date}}</td>
                 <td>{{mascota.fecha_devolucion | date}}</td>
-                <td *ngIf="hayTrabajador">{{ trabajador.nombre }} {{ trabajador.apellido }}</td>
+                <td *ngIf="hayTrabajador">
+                    <a class="link-underline-primary" (click)="verTrabajador()">
+                        {{ trabajador.nombre }} {{ trabajador.apellido }}
+                    </a>
+                </td>
                 <td *ngIf="!hayTrabajador">Aun no hay cuidador designado.</td>
                 <td>{{ hayTrabajador ? trabajador.telefono : "-" }}</td>
                 <td>
@@ -100,8 +104,11 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-end mt-3">
-            <button class="btn btn-sm btn-primary" *ngIf="authService.user['rol'] === 'Cliente'" (click)="recogerMascota()">Recoger Mascota</button>
+            <button class="btn btn-sm btn-primary" *ngIf="authService.user['rol'] === 'Cliente'" [disabled]="!poderRecogerMascota" (click)="recogerMascota()">Recoger Mascota</button>
             <button class="btn btn-sm btn-warning" *ngIf="authService.user['rol'] === 'Trabajador' && authService.user['id_usuario'] === mascota.id_trabajador" (click)="actualizarEstado()">Actualizar Estado</button>
+          </div>
+          <div class="alert alert-warning mt-3" *ngIf="!poderRecogerMascota">
+            Aun no ha llegado la fecha de retorno de la mascota.
           </div>
         </div>
         <div class="col-lg-2"></div>
