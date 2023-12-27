@@ -16,17 +16,17 @@
             <a class="nav-link" routerLinkActive="active" routerLink="hospedaje">Atención</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="perfil">Perfil</a>
+            <a id="navPerfil" class="nav-link" routerLinkActive="active" routerLink="perfil">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" *ngIf="authService.user['rol'] === 'Cliente'" routerLink="resenas">Reseñas</a>
+            <a id="navResena" class="nav-link" routerLinkActive="active" *ngIf="authService.user['rol'] === 'Cliente'" routerLink="resenas">Reseñas</a>
             <a class="nav-link" routerLinkActive="active" *ngIf="authService.user['rol'] === 'Trabajador'" [routerLink]="['trabajador', authService.user['id_usuario']]">Reseñas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="tienda">Tienda</a>
+            <a id="navTienda" class="nav-link" routerLinkActive="active" routerLink="tienda">Tienda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="cerrarSesion()">Cerrar Sesión</a>
+            <a id="navCerrarSesion" class="nav-link" (click)="cerrarSesion()">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
