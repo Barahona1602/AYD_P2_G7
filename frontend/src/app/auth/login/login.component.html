@@ -9,7 +9,7 @@
             <div class="row mt-2">
               <div class="col-lg">
                 <label class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" [ngClass]="{'is-invalid': notValidCorreo}" formControlName="correo">
+                <input id="email" type="email" class="form-control" [ngClass]="{'is-invalid': notValidCorreo}" formControlName="correo">
                 <div class="invalid-feedback">
                   Correo es requerido
                 </div>
@@ -18,7 +18,7 @@
             <div class="row mt-2">
               <div class="col-lg">
                 <label class="form-label">Contraseña</label>
-                <input type="password" class="form-control" [ngClass]="{'is-invalid': notValidPassword}" formControlName="password">
+                <input id="password" type="password" class="form-control" [ngClass]="{'is-invalid': notValidPassword}" formControlName="password">
                 <div class="invalid-feedback">
                   Contraseña es requerida
                 </div>
@@ -29,7 +29,7 @@
             </div>
             <div class="d-flex justify-content-between mt-2">
               <a class="text-primary" [routerLink]="['/auth/register']">Aún no tienes cuenta?</a>
-              <button type="button" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="login()">Iniciar Sesión</button>
+              <button id="btn" type="button" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="login()">Iniciar Sesión</button>
             </div>
           </form>
         </div>
