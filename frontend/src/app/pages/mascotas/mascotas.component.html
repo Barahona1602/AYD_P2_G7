@@ -5,7 +5,7 @@
     </div>
     <div class="col-lg-2">
       <div class="d-grid gap-2">
-        <button class="btn btn-outline-primary" (click)="crearMascota()" *ngIf="isCliente">Crear Mascota</button>
+        <button id="irACrearMascota" class="btn btn-outline-primary" (click)="crearMascota()" *ngIf="isCliente">Crear Mascota</button>
       </div>
     </div>
   </div>
@@ -37,8 +37,8 @@
         <td>{{mascota.comportamiento}}</td>
         <td>{{mascota.contacto_vet}}</td>
         <td *ngIf="isCliente">
-          <button class="btn btn-sm btn-warning" *ngIf="!mascota.id_atencion" [disabled]="mascota.id_atencion" (click)="hospedarMascota(mascota)">Hospedar</button>
-          <span class="badge text-bg-success" *ngIf="mascota.id_atencion">Hospedado</span>
+          <button [id]="mascota.id_mascota" class="btn btn-sm btn-warning" *ngIf="!mascota.id_atencion" [disabled]="mascota.id_atencion" (click)="hospedarMascota(mascota)">Hospedar</button>
+          <span [id]="'span'+mascota.id_mascota" class="badge text-bg-success" *ngIf="mascota.id_atencion">Hospedado</span>
         </td>
         <td *ngIf="!isCliente">
           {{ mascota.fecha_devolucion | date }}

@@ -7,7 +7,7 @@
     </div>
     <div class="col-lg">
       <div class="d-grid gap-2">
-        <button class="btn btn-primary" (click)="crearProducto()" *ngIf="authService.user['rol'] === 'Trabajador'">Crear Producto</button> 
+        <button id="btnCrearProducto" class="btn btn-primary" (click)="crearProducto()" *ngIf="authService.user['rol'] === 'Trabajador'">Crear Producto</button> 
       </div>
     </div>
   </div>
