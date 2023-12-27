@@ -2,8 +2,8 @@ describe('Reseñas del Hotel', () => {
   
     it("Debería de ingresar reseñas exitosamente", () => {
       cy.visit("http://localhost:4200/auth/login");
-      cy.get("#email").type("pablo@gmail.com");
-      cy.get("#password").type("Pablo.123");
+      cy.get("#email").type("test@gmail.com");
+      cy.get("#password").type("Pa$$word123");
       cy.get("#btn").click();
   
       cy.url().should('include', '/home');

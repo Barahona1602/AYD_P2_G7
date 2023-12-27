@@ -2,7 +2,7 @@ describe("Creación y hospedaje de mascota", () => {
   it("Debería mostrar mensaje de error si no se llena el formulario correctamente.", () => {
      // Empezar desde la pantalla de login
      cy.visit("http://localhost:4200/auth/login");
-     cy.get("#email").type("jorge@gmail.com");
+     cy.get("#email").type("test@gmail.com");
      cy.get("#password").type("Pa$$word123");
      cy.get("#btn").click();
  
@@ -43,7 +43,7 @@ describe("Creación y hospedaje de mascota", () => {
     
     // Empezar desde la pantalla de login
     cy.visit("http://localhost:4200/auth/login");
-    cy.get("#email").type("jorge@gmail.com");
+    cy.get("#email").type("test@gmail.com");
     cy.get("#password").type("Pa$$word123");
     cy.get("#btn").click();
 

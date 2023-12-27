@@ -2,8 +2,8 @@ describe('Reseñas del Hotel', () => {
   
     it("Debería de ingresar reseñas exitosamente", () => {
       cy.visit("http://localhost:4200/auth/login");
-      cy.get("#email").type("ryan@gmail.com");
-      cy.get("#password").type("Ryan.123");
+      cy.get("#email").type("trabajador@gmail.com");
+      cy.get("#password").type("Pa$$word123");
       cy.get("#btn").click();
   
       cy.url().should('include', '/home');
@@ -25,7 +25,7 @@ describe('Reseñas del Hotel', () => {
     
       cy.get("#inputCantProducto").type("3");  
       
-      cy.get("#inputImgProducto").type("https://www.google.com/url?sa=i&url=https%3A%2F%2Fpremiumpetcaregt.com%2Fcategoria-producto%2Fperros%2Fcollares-correas-y-arneses%2F&psig=AOvVaw0r_jBSFl_qtwfrShD52Bd7&ust=1703745068471000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPjAnqj_roMDFQAAAAAdAAAAABAE"); 
+      cy.get("#inputImgProducto").type("https://m.media-amazon.com/images/I/41jEakUsOHL._AC_UF894,1000_QL80_.jpg"); 
     
       // Verifica que el botón "Confirmar" esté habilitado
       cy.get("#btnConfiProdu").should("not.be.disabled");
