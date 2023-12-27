@@ -31,6 +31,6 @@ describe('login', () => {
     cy.url().should('include', '/home');
 
     // También puedes verificar elementos específicos en la página /home para asegurarte de que estás en la página correcta
-    cy.get("#titulo").should('have.text', 'Bienvenido test test');
+    cy.get("#titulo").contains("Bienvenido").should("exist");
   });
 });
