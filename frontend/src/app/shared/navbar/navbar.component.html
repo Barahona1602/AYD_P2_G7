@@ -10,7 +10,7 @@
             <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="mascotas">Mascotas</a>
+            <a class="nav-link" id="navMascotas" routerLinkActive="active" routerLink="mascotas">Mascotas</a>
           </li>
           <li class="nav-item" *ngIf="authService.user['rol'] === 'Trabajador'">
             <a class="nav-link" routerLinkActive="active" routerLink="hospedaje">Atención</a>
