@@ -38,7 +38,7 @@ jobs:
       working-directory: ./frontend
 
     - name: Run tests
-      run: npx cypress open
+      run: npx cypress run
       working-directory: ./frontend
 
 
