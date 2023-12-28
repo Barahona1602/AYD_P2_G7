@@ -11,7 +11,7 @@ describe('Reseñas del Hotel', () => {
   
       cy.url().should('include', '/perfil');
         
-    
+
       // Ingresa texto en el campo de reseña
       cy.get("#inputTel").clear();
       cy.get("#inputTel").type("50367150");
