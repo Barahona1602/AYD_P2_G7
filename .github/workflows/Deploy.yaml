@@ -37,6 +37,9 @@ jobs:
       run: ng build
       working-directory: ./frontend
 
+    - name: Run tests
+      run: npm test
+      working-directory: ./backend
 
 
 
