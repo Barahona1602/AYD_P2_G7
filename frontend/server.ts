@@ -1,6 +1,6 @@
 const { spawn } = require('child_process');
 
-function startServer() {
+export function startServer() {
     return new Promise((resolve, reject) => {
 
         const reactServerProcess = spawn('ng', ['serve'], {
@@ -31,8 +31,3 @@ function startServer() {
     });
 }
 
-module.exports = startServer;
-
-if (require.main === module) {
-    startServer().then(r => {})
-}
