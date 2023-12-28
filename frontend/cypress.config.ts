@@ -14,7 +14,7 @@ export default defineConfig({
         await killProcess(procesos.back.pid);
       });
     },
-    baseUrl: "http://localhost:4200"
+    //baseUrl: "http://localhost:4200"
   },
   // component: {
   //   devServer: {

@@ -5,7 +5,7 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-
+console.log("Hola mundo");
 //ACÁ VAN Las IMPORTACIONES DE LOS MÓDULOS
 const holaMundo = require('./modules/holaMundo');
 const login = require('./modules/login');
