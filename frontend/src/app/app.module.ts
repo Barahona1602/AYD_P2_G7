@@ -10,6 +10,7 @@ import { ConfirmActionComponent } from './modals/confirm-action/confirm-action.c
 import { HospedarMascotaModalComponent } from './modals/hospedar-mascota-modal/hospedar-mascota-modal.component';
 import { FormsModule } from '@angular/forms';
 import { ActualizarEstadoModalComponent } from './modals/actualizar-estado-modal/actualizar-estado-modal.component';
+import { ResenaModalComponent } from './modals/resena-modal/resena-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ActualizarEstadoModalComponent } from './modals/actualizar-estado-modal
     NavbarComponent,
     ConfirmActionComponent,
     HospedarMascotaModalComponent,
-    ActualizarEstadoModalComponent
+    ActualizarEstadoModalComponent,
+    ResenaModalComponent
   ],
   imports: [
     BrowserModule,
