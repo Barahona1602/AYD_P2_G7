@@ -22,11 +22,11 @@ jobs:
 
 
     - name: Install dependencies backend
-      run: npm install
+      run: npm ci
       working-directory: ./backend
 
     - name: Install dependencies frontend
-      run: npm install
+      run: npm ci
       working-directory: ./frontend
 
     - name: Install dependencies frontend angular
