@@ -2,9 +2,9 @@ const mysql = require('mysql');
 
 // Conexión a la base de datos
 const connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'http://34.82.9.177',
     user: 'root',
-    password: '12345',
+    password: '1oRsA9s34Vb1oLd',
     database: 'huellitafeliz',
     port: 3306
 });
