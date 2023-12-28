@@ -1,5 +1,6 @@
 import { defineConfig } from "cypress";
 import { startServer } from "./server";
+const treeKill = require('tree-kill');
 let procesos = { front: null, back: null };
 export default defineConfig({
   e2e: {
@@ -41,8 +42,11 @@ function killProcess(pid) {
           if (err) {
               reject(err);
           } else {
-              resolve();
+              resolve(null);
           }
       });
   });
+}
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
